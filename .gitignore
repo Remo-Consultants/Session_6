@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Data files
+data/
+
+# Environment and Lock Files
+.venv/
+uv.lock

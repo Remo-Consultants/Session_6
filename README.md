@@ -150,47 +150,25 @@ The following section details the performance of each model over 15 epochs of tr
 
 ### Model 1: `DS_CNN_V1` Results
 
-<details>
-<summary>Click to view Training Log</summary>
-
-
---- Running Model: DS_CNN_V1 ---
-Total Trainable Parameters for DS_CNN_V1: 5226
-Epoch 1: Train Acc: 73.79%, Test Acc: 93.78%
-Epoch 2: Train Acc: 88.67%, Test Acc: 94.60%
-...
-Epoch 15: Train Acc: 94.92%, Test Acc: 97.49%
-
-
-</details>
+![Model 1 Log](Images/Model_1_Logs.jpg)
 
 **Performance Plot:**
-*Note: You must upload your plot images to the repository and update the links below.*
-![Model 1 Output](path/to/your/model_1_plot.png)
+
+![Model 1 Output](Images/Model_1_Output.png)
 
 ### Model 2: `DS_CNN_V2` Results
 
-<details>
-<summary>Click to view Training Log</summary>
+![Model 2 Log](Images/Model_2_Logs.jpg)
 
-```--- Running Model: DS_CNN_V2 ---
-Total Trainable Parameters for DS_CNN_V2: 6590
-Epoch 1: Train Acc: 87.89%, Test Acc: 96.79%
-Epoch 2: Train Acc: 93.49%, Test Acc: 97.96%
-...
-Epoch 15: Train Acc: 97.57%, Test Acc: 99.27%
-
-
+**Performance Plot:**
+![Model 2 Output](Images/Model_2_Output.png)
 
 Model 3: DS_CNN_V3 Results
 
---- Running Model: DS_CNN_V3 ---
-Total Trainable Parameters for DS_CNN_V3: 4538
-Epoch 1: Train Acc: 88.02%, Test Acc: 97.51%
-Epoch 2: Train Acc: 93.69%, Test Acc: 97.81%
-...
-Epoch 15: Train Acc: 97.20%, Test Acc: 99.25%
+![Model 3 Log](Images/Model_3_Logs.jpg)
 
+**Performance Plot:**
+![Model 3 Output](Images/Model_3_Output.png)
 
 🏆 Comparative Analysis
 This table summarizes the final performance of the three models, highlighting the trade-offs between parameter count and accuracy.

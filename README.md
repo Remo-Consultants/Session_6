@@ -111,7 +111,7 @@ MNIST is a benchmark dataset of 70,000 handwritten digits (0-9), each a 28x28 pi
   | AdaptiveAvgPool2d  | Output: (1, 1)                           |
   | Linear             | 28→10 features                           |
 
-  ![DS_CNN_V2 Architecture](Images/DS_CNN_V2_Arch.png.png) <!-- Placeholder -->
+  ![DS_CNN_V2 Architecture](Images/DS_CNN_V2_Arch.png) <!-- Placeholder -->
 
 ### Model 3: DS_CNN_V3
 - **Parameters:** 6,526
@@ -174,7 +174,7 @@ Each model was trained for 15 epochs. Key results:
 - ![Model 3 Log](Images/Model_3_Logs.jpg)
 - ![Model 3 Output](Images/Model_3_Output.png)
 
-> ![Confusion Matrix](Images/confusion_matrix.png) <!-- Placeholder: Insert confusion matrix illustration -->
+> ![Confusion Matrix](Images/Confusion_Matrix.png) 
 
 ---
 

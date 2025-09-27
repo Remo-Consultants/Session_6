@@ -147,8 +147,6 @@ uv pip install torch torchvision matplotlib
 python main.py
 ```
 
-> ![Setup Flowchart](Images/CNN%20PIPELINE.png)
-
 ---
 
 ## 📈 Results & Analysis

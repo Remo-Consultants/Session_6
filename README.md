@@ -34,15 +34,13 @@ This project demonstrates high-performance Convolutional Neural Networks (CNNs) 
 
 > **Pipeline Overview**
 >
-> ![CNN Pipeline Overview](Images/CNN_PIPELINE.png) 
+> ![CNN Pipeline Overview](Images/CNN%20PIPELINE.png) 
 
 ---
 
 ## 🚀 Technology Stack
 
 | Python | PyTorch | torchvision | matplotlib | uv |
-|:------:|:-------:|:-----------:|:----------:|:--:|
-| <img src="Images/python_logo.svg" width="40"/> | <img src="Images/pytorch_logo.svg" width="40"/> | <img src="Images/torchvision_logo.svg" width="40"/> | <img src="Images/matplotlib_logo.svg" width="40"/> | <img src="Images/uv_logo.svg" width="40"/> |
 
 ---
 
@@ -113,7 +111,7 @@ MNIST is a benchmark dataset of 70,000 handwritten digits (0-9), each a 28x28 pi
   | AdaptiveAvgPool2d  | Output: (1, 1)                           |
   | Linear             | 28→10 features                           |
 
-  ![DS_CNN_V2 Architecture](Images/DS_CNN_V2_Arch.png) <!-- Placeholder -->
+  ![DS_CNN_V2 Architecture](Images/DS_CNN_V2_Arch.png.png) <!-- Placeholder -->
 
 ### Model 3: DS_CNN_V3
 - **Parameters:** 6,526

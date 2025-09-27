@@ -59,13 +59,6 @@ This project demonstrates high-performance Convolutional Neural Networks (CNNs) 
 
 ---
 
-## 🧠 Understanding CNNs
-
-### What is a CNN?
-A Convolutional Neural Network excels at analyzing image data. It learns hierarchical features using layers such as convolution, pooling, and fully-connected layers.
-
-> ![CNN Concept Illustration](Images/cnn_concept_diagram.png) 
-
 ### The MNIST Dataset
 MNIST is a benchmark dataset of 70,000 handwritten digits (0-9), each a 28x28 pixel grayscale image.
 

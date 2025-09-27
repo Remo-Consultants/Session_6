@@ -66,7 +66,7 @@ This project demonstrates high-performance Convolutional Neural Networks (CNNs) 
 ### What is a CNN?
 A Convolutional Neural Network excels at analyzing image data. It learns hierarchical features using layers such as convolution, pooling, and fully-connected layers.
 
-> ![CNN Concept Illustration](Images/cnn_concept_diagram.png) <!-- Placeholder: Insert conceptual diagram of CNN layers -->
+> ![CNN Concept Illustration](Images/cnn_concept_diagram.png) 
 
 ### The MNIST Dataset
 MNIST is a benchmark dataset of 70,000 handwritten digits (0-9), each a 28x28 pixel grayscale image.
@@ -156,7 +156,7 @@ uv pip install torch torchvision matplotlib
 python main.py
 ```
 
-> ![Setup Flowchart](Images/setup_flowchart.png) <!-- Placeholder: Insert setup flowchart illustration -->
+> ![Setup Flowchart](Images/CNN%20PIPELINE.png)
 
 ---
 
@@ -190,25 +190,6 @@ Each model was trained for 15 epochs. Key results:
 
 > **Conclusion:**  
 > All three models achieve impressive accuracy; Model 2 (DS_CNN_V2) stands out for its balance of efficiency and performance.
-
----
-
-## 🎨 Illustrations
-
-- CNN pipeline schematic
-- Conceptual diagram of CNN layers
-- Sample MNIST digits (correct/incorrect)
-- Model architecture diagrams for V1, V2, V3
-- Training/validation plots
-- Confusion matrix
-
-*All images above are placeholders. Please replace with your own diagrams and plots for maximum impact.*
-
----
-
-## 👥 Contributors
-
-- [See all contributors](https://github.com/Remo-Consultants/Session_6/graphs/contributors)
 
 ---
 

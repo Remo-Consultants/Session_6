@@ -76,9 +76,13 @@ MNIST is a benchmark dataset of 70,000 handwritten digits (0-9), each a 28x28 pi
 
 > **Visual Comparison of Architectures**
 >
-> ![Model Comparison Diagram](Images/model_architectures_comparison.png) <!-- Placeholder: Visual comparison of the three architectures -->
+> ![Model Comparison Diagram](Images/model_architectures_comparison.png) 
 
 ### Model 1: DS_CNN_V1
+Target --Target was to build a base model which had all the relevant layers and keep the parameters below 8000
+Result -- Model of 5226 Parameters with final accuracy 97.49%
+Analysis -- Model was underfitting , Next step to increase accuracy 
+
 - **Parameters:** 5,226
 - **Architecture:**
   | Layer              | Details                                  |
@@ -90,9 +94,13 @@ MNIST is a benchmark dataset of 70,000 handwritten digits (0-9), each a 28x28 pi
   | AdaptiveAvgPool2d  | Output: (1, 1)                           |
   | Linear             | 32→10 features                           |
 
-  ![DS_CNN_V1 Architecture](Images/DS_CNN_V1_Arch.png) <!-- Placeholder -->
+  ![DS_CNN_V1 Architecture](Images/DS_CNN_V1_Arch.png)
 
 ### Model 2: DS_CNN_V2
+Target --Target was to improve on model 1 , increase higher accuracy and  keep the parameters below 8000
+Result -- Model of 4070 Parameters with final accuracy 99.2%
+Analysis -- Model 2 was more efficient compared to Model 1. Used lesser input channels compared to Model 1 . Next iteration to increase accuracy and enable consistency across EPOCHs
+
 - **Parameters:** 4,070
 - **Architecture:**
   | Layer              | Details                                  |
@@ -104,9 +112,12 @@ MNIST is a benchmark dataset of 70,000 handwritten digits (0-9), each a 28x28 pi
   | AdaptiveAvgPool2d  | Output: (1, 1)                           |
   | Linear             | 28→10 features                           |
 
-  ![DS_CNN_V2 Architecture](Images/DS_CNN_V2_Arch.png) <!-- Placeholder -->
+  ![DS_CNN_V2 Architecture](Images/DS_CNN_V2_Arch.png) 
 
 ### Model 3: DS_CNN_V3
+Target --Target was to improve on previous models , increase higher accuracy and  keep the parameters below 8000
+Result -- Model of 6526 Parameters with final accuracy 99.27%
+Analysis -- Model 3 was designed with a higher input channel in comparision to earlier models,had a higher consistency in accuracy and more efficient
 - **Parameters:** 6,526
 - **Architecture:**
   | Layer              | Details                                  |
@@ -118,7 +129,7 @@ MNIST is a benchmark dataset of 70,000 handwritten digits (0-9), each a 28x28 pi
   | AdaptiveAvgPool2d  | Output: (1, 1)                           |
   | Linear             | 36→10 features                           |
 
-  ![DS_CNN_V3 Architecture](Images/DS_CNN_V3_Arch.png) <!-- Placeholder -->
+  ![DS_CNN_V3 Architecture](Images/DS_CNN_V3_Arch.png) 
 
 ---
 

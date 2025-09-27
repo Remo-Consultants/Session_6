@@ -1,179 +1,220 @@
-# MNIST Digit Classification with CNNs
+<p align="center">
+  <img src="Images/Project_Header.png" alt="Project Logo" width="120"/>
+</p>
 
-[![Python 3.x](https://img.shields.io/badge/Python-3.x-blue.svg)](https://www.python.org/)
-[![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=flat&logo=PyTorch&logoColor=white)](https://pytorch.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+<h1 align="center">MNIST Digit Classification with CNNs</h1>
 
-This project demonstrates the use of Convolutional Neural Networks (CNNs) to classify handwritten digits from the MNIST dataset. The codebase is modular, allowing for the sequential training and evaluation of three distinct CNN models with varying, lightweight architectures.
+<p align="center">
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.x-blue.svg"></a>
+  <a href="https://pytorch.org/"><img src="https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=flat&logo=PyTorch&logoColor=white"></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
+</p>
+
+---
 
 ## 📜 Table of Contents
 
-- [Project Overview](#-project-overview)
-- [🚀 Technology Stack](#-technology-stack)
-- [📁 File Structure](#-file-structure)
-- [🧠 Understanding the CNN for MNIST](#-understanding-the-cnn-for-mnist)
-- [🏗️ Model Architectures](#️-model-architectures)
-- [⚙️ How to Run](#️-how-to-run)
-- [📈 Results and Analysis](#-results-and-analysis)
-- [🏆 Comparative Analysis](#-comparative-analysis)
+- [Project Overview](#project-overview)
+- [Technology Stack](#technology-stack)
+- [File Structure](#file-structure)
+- [Understanding CNNs](#understanding-cnns)
+- [Model Architectures](#model-architectures)
+- [How to Run](#how-to-run)
+- [Results & Analysis](#results--analysis)
+- [Comparative Analysis](#comparative-analysis)
+- [Illustrations](#illustrations)
+- [Contributors](#contributors)
+- [License](#license)
+
+---
 
 ## 📖 Project Overview
 
-The primary goal of this project is to build, train, and evaluate lightweight CNN models for handwritten digit recognition. The models are intentionally designed to have a trainable parameter count between **3,500 and 7,500**, ensuring they are computationally efficient while maintaining high accuracy.
+This project demonstrates high-performance Convolutional Neural Networks (CNNs) for classifying handwritten digits from the MNIST dataset. The codebase is modular and designed for clarity, scalability, and experimentation.
 
-The project is structured into several modules, separating concerns like data loading, model definition, and the training process. This makes the code clean, readable, and easy to maintain.
+> **Pipeline Overview**
+>
+> ![CNN Pipeline Overview](Images/CNN_PIPELINE.png) 
+
+---
 
 ## 🚀 Technology Stack
 
-- **Python 3.x**
-- **PyTorch**: For building and training the neural networks.
-- **torchvision**: For accessing the MNIST dataset and image transformations.
-- **matplotlib**: For plotting the training and test accuracy graphs.
-- **uv**: As the package installer and virtual environment manager.
+| Python | PyTorch | torchvision | matplotlib | uv |
+|:------:|:-------:|:-----------:|:----------:|:--:|
+| <img src="Images/python_logo.svg" width="40"/> | <img src="Images/pytorch_logo.svg" width="40"/> | <img src="Images/torchvision_logo.svg" width="40"/> | <img src="Images/matplotlib_logo.svg" width="40"/> | <img src="Images/uv_logo.svg" width="40"/> |
+
+---
 
 ## 📁 File Structure
 
-The project is organized into the following modules:
-
-
+```plaintext
 .
-├── data_loader.py # Handles downloading, transforming, and loading the MNIST dataset.
-├── model_v1.py # Defines the DS_CNN_V1 model class.
-├── model_v2.py # Defines the DS_CNN_V2 model class.
-├── model_v3.py # Defines the DS_CNN_V3 model class.
-├── train.py # Contains the core training and testing logic.
-└── main.py # Main script to orchestrate the training and evaluation of all models.
+├── data_loader.py       # MNIST dataset downloading, transformation, loading
+├── model_v1.py          # DS_CNN_V1 model definition
+├── model_v2.py          # DS_CNN_V2 model definition
+├── model_v3.py          # DS_CNN_V3 model definition
+├── train.py             # Training and evaluation logic
+├── main.py              # Orchestrates training/evaluation for all models
+└── Images/              # Plots, architecture diagrams, sample outputs
+```
 
+---
 
-
-
-## 🧠 Understanding the CNN for MNIST
+## 🧠 Understanding CNNs
 
 ### What is a CNN?
+A Convolutional Neural Network excels at analyzing image data. It learns hierarchical features using layers such as convolution, pooling, and fully-connected layers.
 
-A Convolutional Neural Network (CNN) is a class of neural networks particularly effective for analyzing visual imagery. Unlike standard networks, CNNs use a special operation called **convolution**, which allows them to automatically learn spatial hierarchies of features from images—from simple edges to complex shapes.
+> ![CNN Concept Illustration](Images/cnn_concept_diagram.png) <!-- Placeholder: Insert conceptual diagram of CNN layers -->
 
 ### The MNIST Dataset
+MNIST is a benchmark dataset of 70,000 handwritten digits (0-9), each a 28x28 pixel grayscale image.
 
-The MNIST dataset is a classic collection of 70,000 grayscale images of handwritten digits (0-9). Each image is a small 28x28 pixel square. The dataset is split into 60,000 training images and 10,000 testing images.
+> ![Sample MNIST Digits](Images/sample_mnist_digits.png) <!-- Placeholder: Insert sample images of MNIST digits -->
 
 ### Key Neural Network Layers
+- **`nn.Conv2d`**: Extracts features using convolutional kernels.
+- **`nn.MaxPool2d`**: Downsamples feature maps for spatial invariance.
+- **`nn.AdaptiveAvgPool2d`**: Aggregates features to fixed size.
+- **`nn.Linear`**: Final classification into digit classes.
 
-Our models use a sequence of layers to process the images and learn to classify them.
-
-> **`nn.Conv2d` (Convolutional Layer)**
-> This is the core building block of a CNN. It works by sliding a small filter (kernel) over the input image, creating a "feature map." This process detects features like edges in early layers and more complex patterns in deeper layers.
->
-> ```python
-> # Example: conv1 = nn.Conv2d(1, 16, kernel_size=3)
-> # in_channels=1: The input is a single-channel (grayscale) image.
-> # out_channels=16: The layer produces 16 different feature maps.
-> ```
-
-> **`nn.MaxPool2d` (Max Pooling)**
-> This layer reduces the spatial dimensions of the feature maps, making the feature detection more robust to the position of features in the image.
-
-> **`nn.AdaptiveAvgPool2d` (Adaptive Average Pooling)**
-> This layer reduces each feature map to a single number by taking the average. It guarantees a fixed-size output, which is a flexible way to prepare data for the final classification layer.
-
-> **`nn.Linear` (Fully Connected Layer)**
-> This is a standard neural network layer that takes the extracted features and performs the final classification. It outputs 10 values, representing the model's confidence for each digit (0-9).
+---
 
 ## 🏗️ Model Architectures
 
-### Model 1: `DS_CNN_V1`
-- **Total Trainable Parameters: 5,226**
-| Layer                  | Details                               |
-| ---------------------- | ------------------------------------- |
-| `Conv2d`               | 1 in channel, 16 out channels, 3x3 kernel |
-| `MaxPool2d`            | 2x2 kernel                            |
-| `Conv2d`               | 16 in channels, 32 out channels, 3x3 kernel |
-| `MaxPool2d`            | 2x2 kernel                            |
-| `AdaptiveAvgPool2d`    | Output size (1, 1)                    |
-| `Linear`               | 32 in features, 10 out features       |
+> **Visual Comparison of Architectures**
+>
+> ![Model Comparison Diagram](Images/model_architectures_comparison.png) <!-- Placeholder: Visual comparison of the three architectures -->
 
-### Model 2: `DS_CNN_V2`
-- **Total Trainable Parameters: 4,070**
-| Layer                  | Details                               |
-| ---------------------- | ------------------------------------- |
-| `Conv2d`               | 1 in channel, 14 out channels, 3x3 kernel |
-| `MaxPool2d`            | 2x2 kernel                            |
-| `Conv2d`               | 14 in channels, 28 out channels, 3x3 kernel |
-| `MaxPool2d`            | 2x2 kernel                            |
-| `AdaptiveAvgPool2d`    | Output size (1, 1)                    |
-| `Linear`               | 28 in features, 10 out features       |
+### Model 1: DS_CNN_V1
+- **Parameters:** 5,226
+- **Architecture:**
+  | Layer              | Details                                  |
+  |--------------------|------------------------------------------|
+  | Conv2d             | 1→16 channels, 3x3 kernel                |
+  | MaxPool2d          | 2x2 kernel                               |
+  | Conv2d             | 16→32 channels, 3x3 kernel               |
+  | MaxPool2d          | 2x2 kernel                               |
+  | AdaptiveAvgPool2d  | Output: (1, 1)                           |
+  | Linear             | 32→10 features                           |
 
-### Model 3: `DS_CNN_V3`
-- **Total Trainable Parameters: 6,526**
-| Layer                  | Details                               |
-| ---------------------- | ------------------------------------- |
-| `Conv2d`               | 1 in channel, 18 out channels, 3x3 kernel |
-| `MaxPool2d`            | 2x2 kernel                            |
-| `Conv2d`               | 18 in channels, 36 out channels, 3x3 kernel |
-| `MaxPool2d`            | 2x2 kernel                            |
-| `AdaptiveAvgPool2d`    | Output size (1, 1)                    |
-| `Linear`               | 36 in features, 10 out features       |
+  ![DS_CNN_V1 Architecture](Images/DS_CNN_V1_Arch.png) <!-- Placeholder -->
+
+### Model 2: DS_CNN_V2
+- **Parameters:** 4,070
+- **Architecture:**
+  | Layer              | Details                                  |
+  |--------------------|------------------------------------------|
+  | Conv2d             | 1→14 channels, 3x3 kernel                |
+  | MaxPool2d          | 2x2 kernel                               |
+  | Conv2d             | 14→28 channels, 3x3 kernel               |
+  | MaxPool2d          | 2x2 kernel                               |
+  | AdaptiveAvgPool2d  | Output: (1, 1)                           |
+  | Linear             | 28→10 features                           |
+
+  ![DS_CNN_V2 Architecture](Images/DS_CNN_V2_Arch.png) <!-- Placeholder -->
+
+### Model 3: DS_CNN_V3
+- **Parameters:** 6,526
+- **Architecture:**
+  | Layer              | Details                                  |
+  |--------------------|------------------------------------------|
+  | Conv2d             | 1→18 channels, 3x3 kernel                |
+  | MaxPool2d          | 2x2 kernel                               |
+  | Conv2d             | 18→36 channels, 3x3 kernel               |
+  | MaxPool2d          | 2x2 kernel                               |
+  | AdaptiveAvgPool2d  | Output: (1, 1)                           |
+  | Linear             | 36→10 features                           |
+
+  ![DS_CNN_V3 Architecture](Images/DS_CNN_V3_Arch.png) <!-- Placeholder -->
+
+---
 
 ## ⚙️ How to Run
 
-1.  **Clone the repository:**
-    ```sh
-    git clone https://github.com/Remo-Consultants/Session_6.git
-    cd Session_6
-    ```
+```bash
+# Clone the repository
+git clone https://github.com/Remo-Consultants/Session_6.git
+cd Session_6
 
-2.  **Set up the environment:**
-    Ensure you have `uv` installed. Create and sync the virtual environment with the required packages.
-    ```sh
-    # Create a virtual environment
-    uv venv
+# Set up the environment (requires 'uv')
+uv venv
 
-    # Activate the environment
-    # On Windows
-    .venv\Scripts\activate
-    # On macOS/Linux
-    source .venv/bin/activate
+# Activate the environment
+# Windows
+.venv\Scripts\activate
+# macOS/Linux
+source .venv/bin/activate
 
-    # Install dependencies
-    uv pip install torch torchvision matplotlib
-    ```
+# Install dependencies
+uv pip install torch torchvision matplotlib
+```
 
-3.  **Run the main script:**
-    Execute the `main.py` script to start the training and evaluation process for all three models.
-    ```sh
-    python main.py
-    ```
+```bash
+# Run the main script
+python main.py
+```
 
-## 📈 Results and Analysis
+> ![Setup Flowchart](Images/setup_flowchart.png) <!-- Placeholder: Insert setup flowchart illustration -->
 
-The following section details the performance of each model over 15 epochs of training.
+---
 
-### Model 1: `DS_CNN_V1` Results
+## 📈 Results & Analysis
 
-![Model 1 Log](Images/Model_1_Logs.jpg)
+Each model was trained for 15 epochs. Key results:
 
-**Performance Plot:**
+### DS_CNN_V1
+- ![Model 1 Log](Images/Model_1_Logs.jpg)
+- ![Model 1 Output](Images/Model_1_Output.png)
 
-![Model 1 Output](Images/Model_1_Output.png)
+### DS_CNN_V2
+- ![Model 2 Log](Images/Model_2_Logs.jpg)
+- ![Model 2 Output](Images/Model_2_Output.png)
 
-### Model 2: `DS_CNN_V2` Results
+### DS_CNN_V3
+- ![Model 3 Log](Images/Model_3_Logs.jpg)
+- ![Model 3 Output](Images/Model_3_Output.png)
 
-![Model 2 Log](Images/Model_2_Logs.jpg)
+> ![Confusion Matrix](Images/confusion_matrix.png) <!-- Placeholder: Insert confusion matrix illustration -->
 
-**Performance Plot:**
-![Model 2 Output](Images/Model_2_Output.png)
+---
 
-Model 3: DS_CNN_V3 Results
+## 🏆 Comparative Analysis
 
-![Model 3 Log](Images/Model_3_Logs.jpg)
+| Model      | Parameters | Final Test Accuracy | Key Features                   |
+|------------|------------|--------------------|--------------------------------|
+| DS_CNN_V1  | 5,226      | 97.49%             | Baseline, simplest             |
+| DS_CNN_V2  | 4,070      | 99.27%             | Efficient, high accuracy       |
+| DS_CNN_V3  | 6,526      | 99.25%             | Most expressive, excellent acc |
 
-**Performance Plot:**
-![Model 3 Output](Images/Model_3_Output.png)
+> **Conclusion:**  
+> All three models achieve impressive accuracy; Model 2 (DS_CNN_V2) stands out for its balance of efficiency and performance.
 
-🏆 Comparative Analysis
-This table summarizes the final performance of the three models, highlighting the trade-offs between parameter count and accuracy.
-Model	Trainable Parameters	Final Test Accuracy (after 15 epochs)	Key Features
-DS_CNN_V1	5,226	97.49%	Simplest architecture, baseline model
-DS_CNN_V2	4,070	99.27%	High accuracy, efficient design
-DS_CNN_V3	6,526	99.25%	Most parameters, excellent accuracy
-Conclusion: All three lightweight models achieve impressive accuracy. Model 2 (DS_CNN_V2) provides a fantastic balance of high performance (99.27% accuracy) and a very low parameter count, making it arguably the most efficient of the three.
+---
+
+## 🎨 Illustrations
+
+- CNN pipeline schematic
+- Conceptual diagram of CNN layers
+- Sample MNIST digits (correct/incorrect)
+- Model architecture diagrams for V1, V2, V3
+- Training/validation plots
+- Confusion matrix
+
+*All images above are placeholders. Please replace with your own diagrams and plots for maximum impact.*
+
+---
+
+## 👥 Contributors
+
+- [See all contributors](https://github.com/Remo-Consultants/Session_6/graphs/contributors)
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).  
+<img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT License"/>
+
+---
